@@ -39,3 +39,14 @@ Revision history for Perl extension Net::SAML2.
 
       Handle the InclusiveNamespaces element in XML Signature
       Handle embedded certificate data presented without newlines.
+
+0.18  UNRELEASED
+      Clean up add in_response_to to Assertation
+      Added support to Sig.pm for sha's > sha1 Fix Sig.pm to only grap the root signature, assertating sigs where breaking it Add some strictures and warnings
+      Sig.pm: use Digest::SHA instead of Digest:SHA1
+      add additional attribute 'key' to Net::SAML2::SP
+      IdP.pm: simplify $idp->format() a bit
+      documentation updates
+      Sig.pm: improve compatibility with simplesamlphp
+      Hack around namespace not working for ds Vs disg :-/
+

@@ -128,6 +128,13 @@ sub new_from_xml {
             = $key->findvalue('ds:KeyInfo/ds:X509Data/ds:X509Certificate')
             =~ /^\s*(.+?)\s*$/s;
 
+        # hmm namespace munging appears broken, XML has: xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+        # but it doesn't match ...
+        if(!$text) {
+            ($text) = $key->findvalue('dsig:KeyInfo/dsig:X509Data/dsig:X509Certificate')
+            =~ /^\s*(.+?)\s*$/s;
+        }
+
         # rewrap the base64 data from the metadata; it may not
         # be wrapped at 64 characters as PEM requires
         $text =~ s/\n//g;
